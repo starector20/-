@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Ten Function</title>
+</head>
+<body>
+
+    <h1>Add Ten Function</h1>
+
+
+
+<label for="inputNumbers">Enter Numbers (comma-separated):</label>
+<input type="text" id="inputNumbers" placeholder="e.g., 1, 5, 8, 12">
+<p>Result: <span id="result"></span></p>
+<button onclick="performAddTen()">Add Ten</button>
+
+<script>
+    
+    // Функція, яка збільшує кожне число в масиві на 10
+    const addTen = (numbers) => numbers.map(number => number + 10);
+
+    // Функція, яка викликається при кліку на кнопку
+    function performAddTen() {
+        const inputNumbersElement = document.getElementById('inputNumbers');
+        const inputNumbersValue = inputNumbersElement.value.trim();
+        const inputNumbers = inputNumbersValue === '' ? [] : inputNumbersValue.split(',').map(Number);
+
+         // Перевірка на коректність введених чисел
+         if (inputNumbers.some(isNaN)) {
+            alert('Please enter valid numbers.');
+            return;
+        }
+
+        const result = addTen(inputNumbers);
+        document.getElementById('result').textContent = result.join(', ');
+    }
+</script>
+
+</body>
+</html>
